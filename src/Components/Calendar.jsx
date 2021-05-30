@@ -10,35 +10,37 @@ import {
 	addDays,
 	isSameMonth,
 	isSameDay,
-	parse,
 } from "date-fns";
+import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
+import "../styles/Calendar.scss";
 
 function Calendar() {
 	const [currentDate, setCurrentDate] = useState(new Date());
-	const [selectedDate, setSelectedDate] = React.useState(new Date());
+	const [selectedDate, setSelectedDate] = useState(new Date());
+	const [exit, setExit] = useState("");
+	const today = new Date();
 
+	// Components
 	const header = () => {
-		const dateFormat = "MMMM yy";
+		const dateFormat = "MMM yy";
 		const monthYear = format(currentDate, dateFormat).split(" ");
 		return (
-			<div>
+			<div className="header">
 				<div>
-					<button onClick={prevMonth}>chevron_left</button>
+					<button onClick={prevMonth}>
+						<HiChevronLeft />
+					</button>
 				</div>
-				<div>
+				<h3>
 					<span>{`${monthYear[0]} '${monthYear[1]}`}</span>
-				</div>
+				</h3>
 				<div>
-					<button onClick={nextMonth}>chevron_right</button>
+					<button onClick={nextMonth}>
+						<HiChevronRight />
+					</button>
 				</div>
 			</div>
 		);
-	};
-	const nextMonth = () => {
-		setCurrentDate(addMonths(currentDate, 1));
-	};
-	const prevMonth = () => {
-		setCurrentDate(subMonths(currentDate, 1));
 	};
 	const weekDays = () => {
 		return (
@@ -51,12 +53,8 @@ function Calendar() {
 			</div>
 		);
 	};
-	const selectDay = (day) => {
-		console.log(day);
-	};
-
-	const cells = () => {
-		const monthStart = startOfMonth(currentDate);
+	const dates = (date = currentDate) => {
+		const monthStart = startOfMonth(date);
 		const monthEnd = endOfMonth(monthStart);
 
 		const startDate = startOfWeek(monthStart);
@@ -73,22 +71,27 @@ function Calendar() {
 			let flag = false;
 
 			for (let i = 0; i < 7; i++) {
+				const cloneDay = day;
 				if (isSameDay(day, selectedDate)) flag = true;
 				formattedDate = format(day, dateFormat);
+
+				const classNames = `day --month${
+					isSameMonth(day, monthStart) ? "" : "-not "
+				}${isSameDay(day, selectedDate) ? " --selected" : ""}${
+					isSameDay(day, today) ? " --today" : ""
+				}`;
+
 				days.push(
 					<div
-						className={`day --month-${
-							isSameMonth(day, monthStart) ? "" : "not"
-						}${isSameDay(day, selectedDate) ? " --selected" : ""}`}
-						onClick={() => {
-							selectDay(day);
-						}}>
+						key={day}
+						className={classNames}
+						onClick={() => selectDay(cloneDay)}>
 						{formattedDate}
 					</div>
 				);
-
 				day = addDays(day, 1);
 			}
+
 			rows.push(
 				<div className={`row ${flag ? "--active" : ""}`} key={day}>
 					{days}
@@ -96,15 +99,42 @@ function Calendar() {
 			);
 			days = [];
 		}
-		return rows.map((row) => row);
+		return <div className={`dates exit-${exit}`}>{rows}</div>;
 	};
+
+	// Utils
+	const selectDay = (day) => {
+		setSelectedDate(day);
+		if (!isSameMonth(day, currentDate)) {
+			if (day > currentDate) setExit("up");
+			else setExit("down");
+			setTimeout(() => {
+				setCurrentDate(day);
+				setExit("");
+			}, 200);
+		}
+	};
+	const nextMonth = () => {
+		setExit("down");
+		setTimeout(() => {
+			setCurrentDate(addMonths(currentDate, 1));
+			setExit("");
+		}, 200);
+	};
+	const prevMonth = () => {
+		setExit("up");
+		setTimeout(() => {
+			setCurrentDate(subMonths(currentDate, 1));
+			setExit("");
+		}, 200);
+	};
+
 	return (
 		<>
-			<h3>{header()}</h3>
-
 			<div className="calendar">
+				{header()}
 				{weekDays()}
-				{cells()}
+				{dates()}
 			</div>
 		</>
 	);

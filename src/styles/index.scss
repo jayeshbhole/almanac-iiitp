@@ -6,41 +6,15 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 body {
 	font-size: 18px;
 	font-family: "Noto Sans JP", sans-serif;
 	background-color: $background-black;
 	color: $text-light;
-	.calendar-container {
-		height: 40rem;
-		background: $background-light;
-		color: $text-dark;
-		border-radius: 2rem 2rem 0 0;
-		padding: 2rem;
-		margin-top: 2rem;
-		.calendar {
-			display: flex;
-			flex-direction: column;
-			.row {
-				display: grid;
-
-				grid-template-columns: repeat(7, 1fr);
-				.day {
-					font-weight: 900;
-					padding: 0.75rem;
-					&.--name {
-						color: $text-lighter;
-						font-weight: 400;
-					}
-					&.--selected {
-						background: #d8cfae;
-					}
-					&.--month-not {
-						font-weight: 700;
-						color: $text-lighter;
-					}
-				}
-			}
-		}
+	#root {
+		display: flex;
+		flex-direction: column;
+		height: 100vh;
 	}
 }
