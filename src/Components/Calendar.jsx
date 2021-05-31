@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+// Styles
+import "../styles/Calendar.scss";
+import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
+// Deps
+import { useState } from "react";
 import {
 	format,
 	addMonths,
@@ -11,8 +15,6 @@ import {
 	isSameMonth,
 	isSameDay,
 } from "date-fns";
-import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
-import "../styles/Calendar.scss";
 
 function Calendar() {
 	const [currentDate, setCurrentDate] = useState(new Date());

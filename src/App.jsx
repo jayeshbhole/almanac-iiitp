@@ -5,7 +5,6 @@ function App() {
 		<>
 			<header className="App-header">Almanac IIIT-P</header>
 			<div className="calendar-container">
-				{/* Helo */}
 				<Calendar />
 			</div>
 		</>

@@ -5,67 +5,84 @@
 	background: $background-light;
 	color: $text-dark;
 	border-radius: 2rem 2rem 0 0;
-	padding: 2rem;
 	margin-top: auto;
-	.calendar {
+	text-align: center;
+}
+
+.calendar {
+	display: flex;
+	flex-direction: column;
+	// width: 100%;
+	max-width: 21ch;
+	padding: 2rem;
+	border-radius: 2rem 2rem;
+	background: $background-light;
+
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none;
+
+	.header {
 		display: flex;
-		flex-direction: column;
-		max-width: 22ch;
-		.header {
-			display: flex;
-			justify-content: space-between;
-			margin-bottom: 1rem;
-			button {
-				border: none;
-				margin: 0 2rem;
-				background: none;
-				font-size: 1.5rem;
-			}
+		justify-content: space-between;
+		margin-bottom: 1rem;
+		button {
+			border: none;
+			margin: 0 2rem;
+			background: none;
+			font-size: 1.5rem;
+			cursor: pointer;
 		}
+	}
 
-		.dates {
-			z-index: 1;
-			animation: 0.2s entry linear;
-			&.exit-up {
-				animation: exit-up 0.2s linear;
-			}
-			&.exit-down {
-				animation: exit-down 0.2s linear;
-			}
+	.dates {
+		z-index: 1;
+		animation: 0.2s entry linear;
+		&.exit-up {
+			animation: exit-up 0.2s linear;
 		}
+		&.exit-down {
+			animation: exit-down 0.2s linear;
+		}
+	}
 
-		.row {
-			display: grid;
-			grid-template-columns: repeat(7, 1fr);
-			.day {
-				font-weight: 700;
-				padding: 1rem 0.5rem;
-				border-radius: 1.5rem;
-				height: 3.5rem;
-				text-align: center;
-				cursor: pointer;
+	.row {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		.day {
+			font-weight: 700;
+			padding: 1rem 0.5rem;
+			border-radius: 1.5rem;
+			height: 3.5rem;
+			text-align: center;
+			cursor: pointer;
+			-webkit-tap-highlight-color: transparent;
 
-				&.--name {
-					color: $text-lighter;
-					font-weight: 400;
-					font-size: 0.9rem;
-					z-index: 5;
-					background: $background-light;
-				}
-				&.--today {
-					background: rgba($highlight, 0.3);
-				}
-				&.--selected {
-					background: $highlight;
-				}
-				&.--month-not {
-					font-weight: 500;
-					color: $text-lighter;
-				}
+			&.--name {
+				color: $text-lighter;
+				font-weight: 400;
+				font-size: 0.9rem;
+				z-index: 5;
+				background: $background-light;
+				cursor: default;
+			}
+			&.--today {
+				background: rgba($highlight, 0.3);
+			}
+			&.--selected {
+				background: $highlight;
+			}
+			&.--month-not {
+				font-weight: 500;
+				color: $text-lighter;
 			}
 		}
 	}
 }
+
 @keyframes exit-down {
 	0% {
 		transform: translateY(0rem);
