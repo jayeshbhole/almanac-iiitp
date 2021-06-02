@@ -1,0 +1,10 @@
+@import "variables.scss";
+#agenda {
+	background: $background-lighter;
+	color: $text-black-dark;
+	padding: 2rem;
+	margin-top: -3rem;
+	border-radius: 2rem 2rem 0 0;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+	flex: 1;
+}
