@@ -21,22 +21,21 @@ function Calendar() {
 	const [selectedDate, setSelectedDate] = useState(new Date());
 	const [exit, setExit] = useState("");
 	const today = new Date();
+	const [minimised, setMinimised] = useState(false);
 
 	// Components
 	const header = () => {
-		const dateFormat = "MMM yy";
-		const monthYear = format(currentDate, dateFormat).split(" ");
+		const dateFormat = "dd MMM yyyy";
+		const monthYear = format(selectedDate, dateFormat).split(" ");
 		return (
 			<div className="header">
+				<h3>
+					{`${monthYear[0]} ${monthYear[1]}`} <span>{`${monthYear[2]}`}</span>
+				</h3>
 				<div>
 					<button onClick={prevMonth}>
 						<HiChevronLeft />
 					</button>
-				</div>
-				<h3>
-					<span>{`${monthYear[0]} '${monthYear[1]}`}</span>
-				</h3>
-				<div>
 					<button onClick={nextMonth}>
 						<HiChevronRight />
 					</button>
@@ -46,7 +45,7 @@ function Calendar() {
 	};
 	const weekDays = () => {
 		return (
-			<div className="row">
+			<div className="row --names">
 				{["S", "M", "T", "W", "T", "F", "S"].map((day, i) => (
 					<div key={i} className="day --name">
 						{day}
@@ -111,6 +110,7 @@ function Calendar() {
 			if (day > currentDate) setExit("up");
 			else setExit("down");
 			setTimeout(() => {
+				setSelectedDate(day);
 				setCurrentDate(day);
 				setExit("");
 			}, 200);
@@ -120,6 +120,7 @@ function Calendar() {
 		setExit("down");
 		setTimeout(() => {
 			setCurrentDate(addMonths(currentDate, 1));
+			setSelectedDate(addMonths(selectedDate, 1));
 			setExit("");
 		}, 200);
 	};
@@ -127,13 +128,16 @@ function Calendar() {
 		setExit("up");
 		setTimeout(() => {
 			setCurrentDate(subMonths(currentDate, 1));
+			setSelectedDate(subMonths(selectedDate, 1));
 			setExit("");
 		}, 200);
 	};
 
 	return (
 		<>
-			<div className="calendar">
+			<div className={`calendar min-${minimised}`}>
+				<button onClick={() => setMinimised(!minimised)}>Toggle</button>
+
 				{header()}
 				{weekDays()}
 				{dates()}

@@ -18,3 +18,25 @@ body {
 		height: 100vh;
 	}
 }
+header {
+	padding: 1rem 2rem;
+	display: flex;
+	justify-content: space-between;
+	h2 {
+		font-weight: 500;
+	}
+	.menu {
+		font-size: 2rem;
+	}
+}
+
+.calendar-container {
+	max-height: 90%;
+	background: $background-light;
+	color: $text-dark;
+	border-radius: 2rem 2rem 0 0;
+	padding-bottom: 3rem;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+}
