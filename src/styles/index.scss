@@ -29,13 +29,24 @@ header {
 		font-size: 2rem;
 	}
 }
-
+#agenda {
+	background: $background-lighter;
+	color: $text-black-dark;
+	padding: 2rem;
+	margin-top: -5rem;
+	border-radius: 2rem 2rem 0 0;
+	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+	// flex: 1;
+	position: relative;
+	z-index: 9;
+	height: 60rem;
+}
 .calendar-container {
-	max-height: 90%;
+	height: 34rem;
 	background: $background-light;
 	color: $text-dark;
 	border-radius: 2rem 2rem 0 0;
-	padding-bottom: 3rem;
+	padding-bottom: 5rem;
 	text-align: center;
 	display: flex;
 	justify-content: center;

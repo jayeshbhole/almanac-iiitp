@@ -61,7 +61,6 @@
 		grid-template-columns: repeat(7, 1fr);
 		transition: all 0.2s ease-in-out;
 		height: 3.5rem;
-		animation: none;
 		clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
 		.day {
 			font-weight: 500;

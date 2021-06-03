@@ -1,12 +1,11 @@
-// import {} from "react";
 import "../styles/Agenda.scss";
 
-const Agenda = ({ date = Date() }) => {
+function Agenda() {
 	return (
-		<div id="agenda">
-			<header>{date}</header>
-		</div>
+		<>
+			<h3>Head</h3>
+		</>
 	);
-};
+}
 
 export default Agenda;
