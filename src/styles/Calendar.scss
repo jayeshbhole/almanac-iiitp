@@ -8,7 +8,7 @@
 	padding: 2rem;
 	border-radius: 2rem 2rem;
 	background: $background-light;
-
+	min-height: 20rem;
 	-webkit-touch-callout: none; /* iOS Safari */
 	-webkit-user-select: none; /* Safari */
 	-khtml-user-select: none; /* Konqueror HTML */
@@ -59,7 +59,7 @@
 	.row {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
-		transition: all 0.2s ease-in-out;
+		transition: all 0.4s ease-in-out;
 		height: 3.5rem;
 		clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
 		.day {

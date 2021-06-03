@@ -22,13 +22,20 @@ function App() {
 	);
 }
 const Main = () => {
-	// const [minCal, setMinCal] = useState(false);
+	const [minCal, setMinCal] = useState(false);
 	const remSize = parseFloat(
 		getComputedStyle(document.documentElement).fontSize
 	);
 	const [selectedDate, setSelectedDate] = useState(new Date());
 
+	// Springy Stuff
+	const [{ marginTop }, api] = useSpring(() => ({
+		marginTop: "-5rem",
+		config: config.slow,
+		// config: { ...config.slow, tension: -2, friction: 5 },
+	}));
 	const open = (canceled) => {
+		setMinCal(true);
 		api.start({
 			marginTop: "-20rem",
 			immediate: false,
@@ -36,18 +43,13 @@ const Main = () => {
 		});
 	};
 	const close = (canceled) => {
+		setMinCal(false);
 		api.start({
 			marginTop: "-5rem",
 			immediate: false,
 			config: canceled ? config.wobbly : config.slow,
 		});
 	};
-	// Springy Stuff
-	const [{ marginTop }, api] = useSpring(() => ({
-		marginTop: "-5rem",
-		config: config.slow,
-	}));
-
 	const bind = useDrag(
 		({ last, vxvy: [, vy], movement: [, my], cancel, canceled, tap }) => {
 			if (tap) return;
@@ -92,7 +94,7 @@ const Main = () => {
 		<>
 			<div className="calendar-container">
 				<Calendar
-					// styleProps={aniPropsCal}
+					minCal={minCal}
 					selectedDate={selectedDate}
 					setSelectedDate={setSelectedDate}
 				/>

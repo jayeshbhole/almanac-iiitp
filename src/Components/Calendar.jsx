@@ -1,7 +1,6 @@
 // Styles
 import "../styles/Calendar.scss";
 import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
-import { useSpring, animated, config } from "@react-spring/web";
 // Deps
 import { useState } from "react";
 import {
@@ -17,7 +16,7 @@ import {
 	isSameDay,
 } from "date-fns";
 
-function Calendar({ selectedDate, setSelectedDate, styleProps }) {
+function Calendar({ selectedDate, setSelectedDate, minCal }) {
 	const [currentDate, setCurrentDate] = useState(new Date());
 	const [exit, setExit] = useState("");
 	const today = new Date();
@@ -94,12 +93,9 @@ function Calendar({ selectedDate, setSelectedDate, styleProps }) {
 			}
 
 			rows.push(
-				<animated.div
-					className={`row ${flag ? "--active" : ""}`}
-					key={day}
-					style={flag ? {} : styleProps}>
+				<div className={`row ${flag ? "--active" : ""}`} key={day}>
 					{days}
-				</animated.div>
+				</div>
 			);
 			days = [];
 		}
@@ -138,11 +134,11 @@ function Calendar({ selectedDate, setSelectedDate, styleProps }) {
 
 	return (
 		<>
-			<animated.div className={`calendar min`}>
+			<div className={`calendar min-${minCal}`}>
 				{header()}
 				{weekDays()}
 				{dates()}
-			</animated.div>
+			</div>
 		</>
 	);
 }
