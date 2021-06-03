@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/almanac-iiitp/static/css/main.8cc2ed4c.chunk.css",
-    "main.js": "/almanac-iiitp/static/js/main.f8ebc98d.chunk.js",
-    "main.js.map": "/almanac-iiitp/static/js/main.f8ebc98d.chunk.js.map",
+    "main.css": "/almanac-iiitp/static/css/main.6cc88275.chunk.css",
+    "main.js": "/almanac-iiitp/static/js/main.affe422e.chunk.js",
+    "main.js.map": "/almanac-iiitp/static/js/main.affe422e.chunk.js.map",
     "runtime-main.js": "/almanac-iiitp/static/js/runtime-main.5c3e70f5.js",
     "runtime-main.js.map": "/almanac-iiitp/static/js/runtime-main.5c3e70f5.js.map",
     "static/js/2.b13ba5a0.chunk.js": "/almanac-iiitp/static/js/2.b13ba5a0.chunk.js",
@@ -12,13 +12,13 @@
     "index.html": "/almanac-iiitp/index.html",
     "service-worker.js": "/almanac-iiitp/service-worker.js",
     "service-worker.js.map": "/almanac-iiitp/service-worker.js.map",
-    "static/css/main.8cc2ed4c.chunk.css.map": "/almanac-iiitp/static/css/main.8cc2ed4c.chunk.css.map",
+    "static/css/main.6cc88275.chunk.css.map": "/almanac-iiitp/static/css/main.6cc88275.chunk.css.map",
     "static/js/2.b13ba5a0.chunk.js.LICENSE.txt": "/almanac-iiitp/static/js/2.b13ba5a0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5c3e70f5.js",
     "static/js/2.b13ba5a0.chunk.js",
-    "static/css/main.8cc2ed4c.chunk.css",
-    "static/js/main.f8ebc98d.chunk.js"
+    "static/css/main.6cc88275.chunk.css",
+    "static/js/main.affe422e.chunk.js"
   ]
 }
