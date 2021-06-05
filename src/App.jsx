@@ -31,59 +31,47 @@ const Main = () => {
 	// Springy Stuff
 	const [{ marginTop }, api] = useSpring(() => ({
 		marginTop: "-5rem",
-		config: config.slow,
-		// config: { ...config.slow, tension: -2, friction: 5 },
+		config: { bounce: 5 },
 	}));
-	const open = (canceled) => {
+	const open = () => {
 		setMinCal(true);
 		api.start({
 			marginTop: "-20rem",
 			immediate: false,
-			config: canceled ? config.wobbly : config.slow,
 		});
 	};
-	const close = (canceled) => {
+	const close = () => {
 		setMinCal(false);
 		api.start({
 			marginTop: "-5rem",
 			immediate: false,
-			config: canceled ? config.wobbly : config.slow,
 		});
 	};
 	const bind = useDrag(
-		({ last, vxvy: [, vy], movement: [, my], cancel, canceled, tap }) => {
+		({ last, vxvy: [, vy], movement: [, my], cancel, tap }) => {
 			if (tap) return;
 			const cur = parseFloat(marginTop.get());
-			// console.log(last, my, vy, cur);
-
-			if (my > 90 || my < -90) {
-				// console.log("Cancel");
+			if (my > 70 || my < -90) {
 				cancel();
 			}
-
 			if (last) {
-				// console.log("Last");
-				if (cur < -8 || vy < -0.1) open(canceled);
-				if (cur >= -8 || vy > 0.1) close(canceled);
+				if (cur < -8 || vy < -0.1) open();
+				if (cur >= -8 || vy > 0.1) close();
 			} else {
-				// console.log("Hehe", cur);
 				if (cur >= -10) {
 					api.start({
 						marginTop: `${-5 + my / remSize}rem`,
 						immediate: true,
-						config: config.slow,
 					});
 				} else if (cur <= -15) {
 					api.start({
 						marginTop: `${-20 + my / remSize}rem`,
 						immediate: true,
-						config: config.slow,
 					});
 				}
 			}
 		},
 		{
-			bounds: { marginTop: "-20rem" },
 			delay: 200,
 			rubberband: true,
 			filterTaps: true,

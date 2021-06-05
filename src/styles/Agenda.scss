@@ -8,12 +8,16 @@
 	padding: 1rem;
 	padding-bottom: 2rem;
 	touch-action: none;
+	cursor: grab;
 	div {
 		border-radius: 3rem;
 		background: $highlight;
 		margin: auto;
 		width: 2rem;
 		height: 4px;
-		cursor: row-resize;
+		transition: filter 0.1s ease-in-out;
+	}
+	&:hover div {
+		filter: brightness(0.8);
 	}
 }
