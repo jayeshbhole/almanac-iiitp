@@ -4,7 +4,7 @@
 	display: flex;
 	flex-direction: column;
 	width: 100%;
-	max-width: 21ch;
+	max-width: 22rem;
 	padding: 2rem;
 	border-radius: 2rem 2rem;
 	background: $background-light;
@@ -26,7 +26,7 @@
 			background: none;
 			font-size: 1.5rem;
 			cursor: pointer;
-			color: $text-lighter;
+			color: $text-black-light;
 			text-align: left;
 			padding-top: 0.5rem;
 			&:hover {
@@ -72,7 +72,7 @@
 			-webkit-tap-highlight-color: transparent;
 
 			&.--name {
-				color: $text-lighter;
+				color: $text-black-light;
 				font-weight: 400;
 				font-size: 0.9rem;
 				z-index: 5;
@@ -87,13 +87,13 @@
 			}
 			&.--month-not {
 				font-weight: 400;
-				color: $text-lighter;
+				color: $text-black-light;
 			}
 		}
 	}
 	&.min-true {
 		.row {
-			clip-path: polygon(0 0, 100% 0%, 100% 0, 0 0);
+			clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
 			height: 0;
 		}
 		.row.--active,

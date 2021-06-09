@@ -31,7 +31,7 @@ const Main = () => {
 	// Springy Stuff
 	const [{ marginTop }, api] = useSpring(() => ({
 		marginTop: "-5rem",
-		config: { bounce: 5 },
+		config: config.stiff,
 	}));
 	const open = () => {
 		setMinCal(true);

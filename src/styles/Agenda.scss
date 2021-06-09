@@ -1,23 +1,85 @@
 @import "variables.scss";
-
-.resize {
-	width: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 1rem;
-	padding-bottom: 2rem;
-	touch-action: none;
-	cursor: grab;
-	div {
-		border-radius: 3rem;
-		background: $highlight;
-		margin: auto;
-		width: 2rem;
-		height: 4px;
-		transition: filter 0.1s ease-in-out;
+#agenda {
+	.resize {
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 1rem;
+		padding-bottom: 4rem;
+		touch-action: none;
+		cursor: grab;
+		div {
+			border-radius: 3rem;
+			background: $highlight;
+			margin: auto;
+			width: 2rem;
+			height: 4px;
+			transition: filter 0.1s ease-in-out;
+		}
+		&:hover div {
+			filter: brightness(0.8);
+		}
 	}
-	&:hover div {
-		filter: brightness(0.8);
+	.header {
+		padding: 0 2rem;
+
+		position: sticky;
+		top: 0;
+		h5 {
+			font-size: 1rem;
+			font-weight: 600;
+		}
+		hr {
+			margin: 1rem 0;
+			border: 0;
+			height: 0;
+			border-top: 1px solid rgba(0, 0, 0, 0.1);
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+		}
+	}
+
+	.events {
+		height: 100%;
+		overflow: auto;
+		padding: 0 2rem;
+
+		.interval {
+			position: relative;
+			margin: 1.5rem 0;
+			.time {
+				font-size: 0.8rem;
+				font-weight: 500;
+				color: $text-black-light;
+				position: relative;
+				display: inline-block;
+				width: 2.5rem;
+				position: absolute;
+				&::after {
+					content: "";
+					height: 1px;
+					width: 2rem;
+					position: absolute;
+					left: -2rem;
+					top: -0.5rem;
+					background-color: $highlight;
+				}
+			}
+			.event {
+				margin: 1rem 0 1rem 3rem;
+				// margin-left: 2rem;
+				padding: 1rem 1.25rem;
+				background-color: #279f70;
+				color: $text-lighter;
+				border-radius: 1.25rem;
+				font-size: 1rem;
+				.title {
+					font-weight: 500;
+				}
+				.duration {
+					font-weight: 300;
+				}
+			}
+		}
 	}
 }
