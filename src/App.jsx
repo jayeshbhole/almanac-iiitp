@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
 import { useDrag } from "react-use-gesture";
 
-import Calendar from "./Components/Calendar";
+import Calendar from "./Components/Calendar/";
 import Agenda from "./Components/Agenda";
+import { DateContext, DateContextProvider } from "./Context/DateContext";
 
 import { CgMenuGridO } from "react-icons/cg";
 import "./styles/index.scss";
@@ -26,7 +27,6 @@ const Main = () => {
 	const remSize = parseFloat(
 		getComputedStyle(document.documentElement).fontSize
 	);
-	const [selectedDate, setSelectedDate] = useState(new Date());
 
 	// Springy Stuff
 	const [{ marginTop }, api] = useSpring(() => ({
@@ -79,13 +79,9 @@ const Main = () => {
 	);
 
 	return (
-		<>
+		<DateContextProvider>
 			<div className="calendar-container">
-				<Calendar
-					minCal={minCal}
-					selectedDate={selectedDate}
-					setSelectedDate={setSelectedDate}
-				/>
+				<Calendar minCal={minCal} />
 			</div>
 			<animated.div id="agenda" style={{ marginTop }}>
 				<div className="resize" {...bind()}>
@@ -93,7 +89,7 @@ const Main = () => {
 				</div>
 				<Agenda />
 			</animated.div>
-		</>
+		</DateContextProvider>
 	);
 };
 

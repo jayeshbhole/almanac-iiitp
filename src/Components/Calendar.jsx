@@ -2,7 +2,7 @@
 import "../styles/Calendar.scss";
 import { HiChevronRight, HiChevronLeft } from "react-icons/hi";
 // Deps
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
 	format,
 	addMonths,
@@ -15,9 +15,11 @@ import {
 	isSameMonth,
 	isSameDay,
 } from "date-fns";
+import { DateContext } from "../Context/DateContext";
 
-function Calendar({ selectedDate, setSelectedDate, minCal }) {
-	const [currentDate, setCurrentDate] = useState(new Date());
+function Calendar({ minCal }) {
+	const { selectedDate, currentDate, setCurrentDate, setSelectedDate } =
+		useContext(DateContext);
 	const [exit, setExit] = useState("");
 	const today = new Date();
 	// const [minimised, setMinimised] = useState(false);
