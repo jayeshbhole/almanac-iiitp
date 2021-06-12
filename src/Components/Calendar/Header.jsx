@@ -12,20 +12,12 @@ const Header = ({ exit, setExit }) => {
 	const monthYear = format(selectedDate, dateFormat).split(" ");
 
 	const nextMonth = () => {
-		setExit("down");
-		setTimeout(() => {
-			setCurrentDate(addMonths(currentDate, 1));
-			setSelectedDate(addMonths(selectedDate, 1));
-			setExit("");
-		}, 300);
+		setCurrentDate(addMonths(currentDate, 1));
+		setSelectedDate(addMonths(selectedDate, 1));
 	};
 	const prevMonth = () => {
-		setExit("up");
-		setTimeout(() => {
-			setCurrentDate(subMonths(currentDate, 1));
-			setSelectedDate(subMonths(selectedDate, 1));
-			setExit("");
-		}, 300);
+		setCurrentDate(subMonths(currentDate, 1));
+		setSelectedDate(subMonths(selectedDate, 1));
 	};
 
 	return (

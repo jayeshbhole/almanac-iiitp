@@ -49,14 +49,7 @@
 
 	.dates {
 		z-index: 1;
-		animation: 0.3s entry linear;
 		min-height: 3.5rem;
-		&.exit-up {
-			animation: exit-up 0.3s linear;
-		}
-		&.exit-down {
-			animation: exit-down 0.3s linear;
-		}
 	}
 
 	.row {
@@ -122,40 +115,5 @@
 				animation: none;
 			}
 		}
-	}
-}
-
-@keyframes exit-down {
-	0% {
-		transform: translateY(0rem);
-		opacity: 1;
-	}
-	80% {
-		transform: translateY(3rem);
-	}
-	100% {
-		opacity: 0;
-	}
-}
-@keyframes exit-up {
-	0% {
-		transform: translateY(0rem);
-		opacity: 1;
-	}
-	80% {
-		transform: translateY(-3rem);
-	}
-	100% {
-		opacity: 0;
-	}
-}
-@keyframes entry {
-	from {
-		opacity: 0;
-		transform: scale(0.85);
-	}
-	to {
-		opacity: 1;
-		transform: scale(1);
 	}
 }
