@@ -1,5 +1,5 @@
 // Deps
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import {
 	format,
 	startOfMonth,
@@ -10,11 +10,13 @@ import {
 	isSameMonth,
 	isSameDay,
 } from "date-fns";
+// Context
 import { DateContext } from "../../Context/DateContext";
 
-const Dates = ({ setExit, exit }) => {
+const Dates = () => {
 	const { selectedDate, currentDate, today, setSelectedDate, setCurrentDate } =
 		useContext(DateContext);
+
 	const selectDay = (day) => {
 		setSelectedDate(day);
 		if (!isSameMonth(day, currentDate)) {

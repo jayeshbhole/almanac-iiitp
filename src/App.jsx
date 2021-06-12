@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useSpring, animated, config } from "@react-spring/web";
 import { useDrag } from "react-use-gesture";
 
 import Calendar from "./Components/Calendar/";
 import Agenda from "./Components/Agenda";
-import { DateContext, DateContextProvider } from "./Context/DateContext";
+import { DateContextProvider } from "./Context/DateContext";
 
 import { CgMenuGridO } from "react-icons/cg";
 import "./styles/index.scss";

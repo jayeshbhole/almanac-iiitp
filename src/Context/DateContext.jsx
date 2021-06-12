@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 
 const DateContext = createContext({
 	selectedDate: null,

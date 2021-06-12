@@ -6,9 +6,11 @@
 	width: 100%;
 	max-width: 22rem;
 	padding: 2rem;
+	padding-bottom: 1rem;
 	border-radius: 2rem 2rem;
 	background: $background-light;
-	min-height: 20rem;
+
+	// Touch select disable
 	-webkit-touch-callout: none; /* iOS Safari */
 	-webkit-user-select: none; /* Safari */
 	-khtml-user-select: none; /* Konqueror HTML */
@@ -19,7 +21,7 @@
 	.header {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 1rem;
+		height: 3rem;
 		button {
 			border: none;
 			width: 2rem;
@@ -59,25 +61,40 @@
 	.row {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
-		transition: all 0.4s ease-in-out;
+		transition: height 0.4s ease-in-out;
+		font-size: 1rem;
+		overflow: hidden;
 		height: 3.5rem;
+
+		&.--names {
+			z-index: 5;
+			height: 2.5rem !important;
+			background: $background-light;
+			opacity: 1 !important;
+		}
+		&.--active {
+			height: 3.5rem !important;
+			opacity: 1 !important;
+		}
+
 		.day {
 			font-weight: 500;
-			padding: 1rem 0.5rem;
+			padding: 1rem 0.25rem;
 			border-radius: 1.5rem;
-			height: 3.5rem;
 			text-align: center;
 			cursor: pointer;
 			-webkit-tap-highlight-color: transparent;
-
+			height: 3.5rem;
+			background: rgba(255, 255, 255, 0);
+			transition: all 0.2s ease-in-out;
 			&.--name {
 				color: $text-black-light;
 				font-weight: 400;
-				font-size: 0.9rem;
-				z-index: 5;
-				background: $background-light;
+				font-size: 0.8rem;
 				cursor: default;
 				border-radius: 0;
+				padding: 0.75rem 0.5rem;
+				height: 2.5rem;
 			}
 			&.--today {
 				background: rgba($highlight, 0.3);
@@ -94,12 +111,6 @@
 	&.min-true {
 		.row {
 			height: 0;
-			opacity: 0;
-		}
-		.row.--active,
-		.row.--names {
-			height: 3.5rem;
-			opacity: 1;
 		}
 	}
 }
