@@ -43,9 +43,9 @@ header {
 	flex: 1;
 	position: relative;
 	z-index: 9;
+	overflow: hidden;
 }
 .calendar-container {
-	min-height: 34rem;
 	background: $background-light;
 	color: $text-dark;
 	border-radius: 2rem 2rem 0 0;

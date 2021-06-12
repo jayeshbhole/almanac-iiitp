@@ -29,6 +29,42 @@ const Main = () => {
 	);
 
 	// Springy Stuff
+	const [{ marginTop }, api] = useSpring(() => ({
+		marginTop: "-5rem",
+		config: config.slow,
+	}));
+
+	const snap = (doMinimise) => {
+		setMinCal(doMinimise);
+		api.start({
+			marginTop: "-5rem",
+			immediate: !minCal & doMinimise,
+			config: config.wobbly,
+		});
+	};
+
+	const bind = useDrag(
+		({ last, vxvy: [, vy], movement: [, my], cancel, tap }) => {
+			if (tap) return;
+			const cur = parseFloat(marginTop.get());
+
+			if (my > 60 || my < -60) cancel();
+
+			if (last) {
+				if (cur < -8 || vy < -0.3) snap(true);
+				if (cur >= -8 || vy > 0.3) snap(false);
+			} else {
+				api.start({
+					marginTop: `${-5 + my / remSize}rem`,
+					immediate: true,
+				});
+			}
+		},
+		{
+			delay: 200,
+			filterTaps: true,
+		}
+	);
 
 	return (
 		<>
@@ -37,8 +73,8 @@ const Main = () => {
 					<Calendar minCal={minCal} />
 				</div>
 
-				<animated.div id="agenda" style={{}}>
-					<div className="resize">
+				<animated.div id="agenda" style={{ marginTop }}>
+					<div className="resize" {...bind()}>
 						<div />
 					</div>
 					<Agenda />

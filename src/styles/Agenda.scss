@@ -2,6 +2,7 @@
 #agenda {
 	.resize {
 		width: 100%;
+		z-index: 1;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -43,10 +44,13 @@
 		height: 100%;
 		overflow: auto;
 		padding: 0 2rem;
-
+		padding-bottom: 1rem;
 		.interval {
 			position: relative;
 			margin: 1.5rem 0;
+			&:last-child {
+				padding-bottom: 2rem;
+			}
 			.time {
 				font-size: 0.8rem;
 				font-weight: 500;
@@ -67,9 +71,8 @@
 			}
 			.event {
 				margin: 1rem 0 1rem 3rem;
-				// margin-left: 2rem;
 				padding: 1rem 1.25rem;
-				background-color: #279f70;
+				background-color: #279f71b2;
 				color: $text-lighter;
 				border-radius: 1.25rem;
 				font-size: 1rem;
