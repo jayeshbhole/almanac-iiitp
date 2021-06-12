@@ -29,67 +29,22 @@ const Main = () => {
 	);
 
 	// Springy Stuff
-	const [{ marginTop }, api] = useSpring(() => ({
-		marginTop: "-5rem",
-		config: config.stiff,
-	}));
-	const open = () => {
-		setMinCal(true);
-		api.start({
-			marginTop: "-20rem",
-			immediate: false,
-		});
-	};
-	const close = () => {
-		setMinCal(false);
-		api.start({
-			marginTop: "-5rem",
-			immediate: false,
-		});
-	};
-	const bind = useDrag(
-		({ last, vxvy: [, vy], movement: [, my], cancel, tap }) => {
-			if (tap) return;
-			const cur = parseFloat(marginTop.get());
-			if (my > 70 || my < -90) {
-				cancel();
-			}
-			if (last) {
-				if (cur < -8 || vy < -0.1) open();
-				if (cur >= -8 || vy > 0.1) close();
-			} else {
-				if (cur >= -10) {
-					api.start({
-						marginTop: `${-5 + my / remSize}rem`,
-						immediate: true,
-					});
-				} else if (cur <= -15) {
-					api.start({
-						marginTop: `${-20 + my / remSize}rem`,
-						immediate: true,
-					});
-				}
-			}
-		},
-		{
-			delay: 200,
-			rubberband: true,
-			filterTaps: true,
-		}
-	);
 
 	return (
-		<DateContextProvider>
-			<div className="calendar-container">
-				<Calendar minCal={minCal} />
-			</div>
-			<animated.div id="agenda" style={{ marginTop }}>
-				<div className="resize" {...bind()}>
-					<div />
+		<>
+			<DateContextProvider>
+				<div className="calendar-container">
+					<Calendar minCal={minCal} />
 				</div>
-				<Agenda />
-			</animated.div>
-		</DateContextProvider>
+
+				<animated.div id="agenda" style={{}}>
+					<div className="resize">
+						<div />
+					</div>
+					<Agenda />
+				</animated.div>
+			</DateContextProvider>
+		</>
 	);
 };
 
