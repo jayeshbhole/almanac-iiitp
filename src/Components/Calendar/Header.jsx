@@ -4,7 +4,7 @@ import { format, subMonths, addMonths } from "date-fns";
 import { useContext } from "react";
 import { DateContext } from "../../Context/DateContext";
 
-const Header = () => {
+const Header = ({ exit, setExit }) => {
 	const { selectedDate, currentDate, setCurrentDate, setSelectedDate } =
 		useContext(DateContext);
 
@@ -12,12 +12,20 @@ const Header = () => {
 	const monthYear = format(selectedDate, dateFormat).split(" ");
 
 	const nextMonth = () => {
-		setCurrentDate(addMonths(currentDate, 1));
-		setSelectedDate(addMonths(selectedDate, 1));
+		setExit("down");
+		setTimeout(() => {
+			setCurrentDate(addMonths(currentDate, 1));
+			setSelectedDate(addMonths(selectedDate, 1));
+			setExit("");
+		}, 300);
 	};
 	const prevMonth = () => {
-		setCurrentDate(subMonths(currentDate, 1));
-		setSelectedDate(subMonths(selectedDate, 1));
+		setExit("up");
+		setTimeout(() => {
+			setCurrentDate(subMonths(currentDate, 1));
+			setSelectedDate(subMonths(selectedDate, 1));
+			setExit("");
+		}, 300);
 	};
 
 	return (

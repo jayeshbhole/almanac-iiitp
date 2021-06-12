@@ -3,6 +3,7 @@ import "../../styles/Calendar.scss";
 // Deps
 import Header from "./Header";
 import Dates from "./Dates";
+import { useState } from "react";
 
 const WeekDays = () => {
 	return (
@@ -17,12 +18,14 @@ const WeekDays = () => {
 };
 
 function Calendar({ minCal }) {
+	const [exit, setExit] = useState("");
+
 	return (
 		<>
 			<div className={`calendar min-${minCal}`}>
-				<Header />
+				<Header setExit={setExit} />
 				<WeekDays />
-				<Dates />
+				<Dates exit={exit} setExit={setExit} minCal={minCal} />
 			</div>
 		</>
 	);

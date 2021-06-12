@@ -31,16 +31,24 @@ const Main = () => {
 	// Springy Stuff
 	const [{ marginTop }, api] = useSpring(() => ({
 		marginTop: "-5rem",
-		config: config.slow,
+		config: config.gentle,
 	}));
 
 	const snap = (doMinimise) => {
-		setMinCal(doMinimise);
-		api.start({
-			marginTop: "-5rem",
-			immediate: !minCal & doMinimise,
-			config: config.wobbly,
-		});
+		if (minCal === doMinimise) {
+			api.start({
+				marginTop: "-5rem",
+				immediate: !minCal & doMinimise,
+				config: config.wobbly,
+			});
+		} else {
+			setMinCal(doMinimise);
+			api.start({
+				marginTop: "-5rem",
+				immediate: !minCal & doMinimise,
+				config: { ...config.stiff, friction: 90 },
+			});
+		}
 	};
 
 	const bind = useDrag(

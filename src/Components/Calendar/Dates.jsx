@@ -13,20 +13,20 @@ import {
 // Context
 import { DateContext } from "../../Context/DateContext";
 
-const Dates = () => {
+const Dates = ({ exit, setExit, minCal }) => {
 	const { selectedDate, currentDate, today, setSelectedDate, setCurrentDate } =
 		useContext(DateContext);
 
 	const selectDay = (day) => {
 		setSelectedDate(day);
 		if (!isSameMonth(day, currentDate)) {
-			// if (day > currentDate) setExit("up");
-			// else setExit("down");
+			if (day > currentDate) setExit("up");
+			else setExit("down");
 			setTimeout(() => {
 				setSelectedDate(day);
 				setCurrentDate(day);
-				// setExit("");
-			}, 200);
+				setExit("");
+			}, 300);
 		}
 	};
 
@@ -79,7 +79,7 @@ const Dates = () => {
 		return rows;
 	};
 
-	return <div className={`dates exit`}>{dates()}</div>;
+	return <div className={`dates exit-${!minCal ? exit : ""}`}>{dates()}</div>;
 };
 
 export default Dates;
