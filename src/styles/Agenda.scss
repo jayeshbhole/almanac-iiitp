@@ -2,7 +2,7 @@
 #agenda {
 	.resize {
 		width: 100%;
-		z-index: 1;
+		z-index: 2;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -24,15 +24,17 @@
 	}
 	.header {
 		padding: 0 2rem;
-
+		z-index: 1;
 		position: sticky;
 		top: 0;
+		background: white;
 		h5 {
 			font-size: 1rem;
 			font-weight: 600;
 		}
 		hr {
-			margin: 1rem 0;
+			margin-top: 1rem;
+			margin-bottom: 0.5rem;
 			border: 0;
 			height: 0;
 			border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -44,9 +46,10 @@
 		height: 100%;
 		overflow: auto;
 		padding: 0 2rem;
-		padding-bottom: 1rem;
+		position: relative;
+		scroll-behavior: smooth;
 		.interval {
-			position: relative;
+			position: static;
 			margin: 1.5rem 0;
 			&:last-child {
 				padding-bottom: 2rem;
@@ -58,7 +61,7 @@
 				position: relative;
 				display: inline-block;
 				width: 2.5rem;
-				position: absolute;
+
 				&::after {
 					content: "";
 					height: 1px;
@@ -76,6 +79,14 @@
 				color: $text-lighter;
 				border-radius: 1.25rem;
 				font-size: 1rem;
+				transition: all 0.3s ease-in-out;
+				&:nth-child(2) {
+					margin-top: -3rem;
+				}
+				&.--active {
+					box-shadow: 0 0 0px 3px white inset;
+					border: 2px solid $highlight;
+				}
 				.title {
 					font-weight: 500;
 				}
