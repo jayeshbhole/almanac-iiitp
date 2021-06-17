@@ -1,5 +1,6 @@
 import "../styles/Agenda.scss";
 import { useEffect, useRef } from "react";
+import Modal from "./Modal";
 
 function Agenda() {
 	const currentRef = useRef();
@@ -7,11 +8,7 @@ function Agenda() {
 
 	useEffect(() => {
 		setTimeout(() => {
-			console.log(
-				currentRef.current.offsetParent,
-				currentRef.current.offsetTop
-			);
-			parentRef.current.scroll({
+			parentRef.current?.scroll({
 				top: currentRef.current.offsetTop,
 				behavior: "smooth",
 			});
@@ -19,8 +16,10 @@ function Agenda() {
 	}, []);
 	return (
 		<>
+			<Modal />
+
 			<div className="header">
-				<h5>On This Day</h5>
+				<h3>On This Day</h3>
 				<hr />
 			</div>
 
@@ -38,14 +37,14 @@ function Agenda() {
 				</div>
 				<div className="interval">
 					<div className="time">10:00 AM</div>
-					<div className="event">
+					<div className="event --active" ref={true && currentRef}>
 						<div className="title">Robotics</div>
 						<div className="duration">30 min</div>
 					</div>
 				</div>
 				<div className="interval">
 					<div className="time">11:00 AM</div>
-					<div className="event --active" ref={true && currentRef}>
+					<div className="event">
 						<div className="title">Hacking</div>
 						<div className="duration">40 min</div>
 					</div>

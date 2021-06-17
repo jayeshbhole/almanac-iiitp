@@ -13,7 +13,7 @@ function App() {
 	return (
 		<>
 			<header>
-				<h2>Batch '23</h2>
+				<h2>Schedule</h2>
 				<div className="menu">
 					<CgMenuGridO />
 				</div>

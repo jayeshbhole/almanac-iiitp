@@ -74,13 +74,12 @@
 		.day {
 			font-weight: 500;
 			padding: 1rem 0.25rem;
-			border-radius: 1.5rem;
+			border-radius: 1.25rem;
 			text-align: center;
 			cursor: pointer;
 			-webkit-tap-highlight-color: transparent;
 			height: 3.5rem;
 			background: rgba(255, 255, 255, 0);
-			transition: all 0.2s ease-in-out;
 			&.--name {
 				color: $text-black-light;
 				font-weight: 400;
