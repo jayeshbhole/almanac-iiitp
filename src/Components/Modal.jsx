@@ -1,14 +1,22 @@
 import { HiOutlineLocationMarker, HiOutlineTag } from "react-icons/hi";
-
-const Modal = () => {
+import { VscChromeClose } from "react-icons/vsc";
+const Modal = ({ setSelectedEvent }) => {
 	return (
 		<>
+			<span
+				style={{ zIndex: 3 }}
+				id="close-modal"
+				onClick={() => setSelectedEvent(false)}>
+				<VscChromeClose />
+			</span>
 			<div className="event modal">
-				<h3 className="title">Hacking</h3>
-				<div className="time">11:00 am - 11:40 am</div>
+				<div className="modal-header event-info">
+					<h3 className="title">Hacking</h3>
+					<div className="time">11:00 am - 11:40 am</div>
+				</div>
 
 				<h4>Location</h4>
-				<div className="venue">
+				<div className="venue event-info">
 					<div className="icon">
 						<HiOutlineLocationMarker />
 					</div>
@@ -23,7 +31,7 @@ const Modal = () => {
 					</div>
 				</div>
 				<h4>Description</h4>
-				<div className="description">
+				<div className="description event-info">
 					<div className="icon">
 						<HiOutlineTag />
 					</div>
@@ -35,7 +43,7 @@ const Modal = () => {
 					</div>
 				</div>
 				<h4>Settings</h4>
-				<div className="settings">{/* <BsGear /> */}</div>
+				<div className="settings event-info">{/* <BsGear /> */}</div>
 			</div>
 		</>
 	);
