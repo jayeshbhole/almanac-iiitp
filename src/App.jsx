@@ -23,7 +23,7 @@ function App() {
 	);
 }
 const Main = () => {
-	const [minCal, setMinCal] = useState(false);
+	const [isMinCal, setIsMinCal] = useState(false);
 	const remSize = parseFloat(
 		getComputedStyle(document.documentElement).fontSize
 	);
@@ -35,17 +35,17 @@ const Main = () => {
 	}));
 
 	const snap = (doMinimise) => {
-		if (minCal === doMinimise) {
+		if (isMinCal === doMinimise) {
 			api.start({
 				marginTop: "-5rem",
-				immediate: !minCal & doMinimise,
+				immediate: !isMinCal & doMinimise,
 				config: config.wobbly,
 			});
 		} else {
-			setMinCal(doMinimise);
+			setIsMinCal(doMinimise);
 			api.start({
 				marginTop: "-5rem",
-				immediate: !minCal & doMinimise,
+				immediate: !isMinCal & doMinimise,
 				config: { ...config.stiff, friction: 90 },
 			});
 		}
@@ -78,7 +78,7 @@ const Main = () => {
 		<>
 			<DateContextProvider>
 				<div className="calendar-container">
-					<Calendar minCal={minCal} />
+					<Calendar isMinCal={isMinCal} />
 				</div>
 
 				<animated.div id="agenda" style={{ marginTop }}>

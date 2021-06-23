@@ -74,7 +74,7 @@ const Dates = () => {
 		return rows;
 	};
 
-	return <div className={`dates `}>{dates()}</div>;
+	return <div className={`dates`}>{dates()}</div>;
 };
 
 export default Dates;

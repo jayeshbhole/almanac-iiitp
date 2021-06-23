@@ -105,14 +105,5 @@
 		.row:not(.--active) {
 			height: 0;
 		}
-		.dates {
-			animation: none;
-			&.exit-up {
-				animation: none;
-			}
-			&.exit-down {
-				animation: none;
-			}
-		}
 	}
 }

@@ -4,7 +4,7 @@ import { format, subMonths, addMonths } from "date-fns";
 import { useContext } from "react";
 import { DateContext } from "../../Context/DateContext";
 
-const Header = ({ exit, setExit }) => {
+const Header = () => {
 	const { selectedDate, currentDate, setCurrentDate, setSelectedDate } =
 		useContext(DateContext);
 
